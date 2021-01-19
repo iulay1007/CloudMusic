@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_bottom"
+    app:startDestination="@id/homePageFragment">
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.cloudmusic.ui.homepage.HomePageFragment"
+        android:label="HomePageFragment" >
+        <action
+            android:id="@+id/home2"
+            app:destination="@id/candRFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/candRFragment"
+        android:name="com.example.cloudmusic.ui.classifyAndRecommend.CandRFragment"
+        android:label="CandRFragment" >
+        <action
+            android:id="@+id/caR"
+            app:destination="@id/mineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.example.cloudmusic.ui.mine.MineFragment"
+        android:label="MineFragment" >
+        <action
+            android:id="@+id/mine"
+            app:destination="@id/communityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.example.cloudmusic.ui.community.CommunityFragment"
+        android:label="CommunityFragment" />
+</navigation>

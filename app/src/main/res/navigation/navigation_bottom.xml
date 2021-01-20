@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/homePageFragment"
-        android:name="com.example.cloudmusic.ui.homepage.HomePageFragment"
+        android:name="com.example.cloudmusic.ui.homepage.view.HomePageFragment"
         android:label="HomePageFragment" >
         <action
             android:id="@+id/home2"

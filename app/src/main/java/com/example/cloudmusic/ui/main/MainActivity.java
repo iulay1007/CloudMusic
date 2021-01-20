@@ -1,35 +1,22 @@
 package com.example.cloudmusic.ui.main;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.classifyAndRecommend.CandRFragment;
 import com.example.cloudmusic.ui.community.CommunityFragment;
-import com.example.cloudmusic.ui.homepage.HomePageFragment;
+import com.example.cloudmusic.ui.homepage.view.HomePageFragment;
 import com.example.cloudmusic.ui.mine.MineFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.cloudmusic.R.menu.navigation_item;
 
 public class MainActivity extends AppCompatActivity {
 

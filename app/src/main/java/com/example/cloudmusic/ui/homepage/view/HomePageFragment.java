@@ -1,15 +1,19 @@
 package com.example.cloudmusic.ui.homepage.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -18,6 +22,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.homepage.model.BannerBean;
+import com.example.cloudmusic.ui.main.MainActivity;
 import com.google.android.material.internal.NavigationMenu;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerAdapter;
@@ -27,10 +32,12 @@ import java.util.List;
 
 public class HomePageFragment extends Fragment {
     private Banner banner;
+    private Button menu_expanded_btn;
     private NavigationMenu mNavigationMenu;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    @SuppressLint("WrongConstant")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +45,18 @@ public class HomePageFragment extends Fragment {
         initBanner(view);
         // 获得抽屉控件
         mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+        menu_expanded_btn=(Button) view.findViewById(R.id.expanded_menu_btn);
+      // mDrawerLayout.isDrawerVisible(View.GONE);
+     ;
+        menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ((MainActivity)getActivity()).openDrawer();
+            //   mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
         // 获得菜单控件
      //   mNavigationMenu = (NavigationMenu) view. findViewById(R.id.navigation_menu);
       //  mNavigationMenu.attacthDrawer(mDrawerLayout);

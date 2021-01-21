@@ -1,12 +1,20 @@
 package com.example.cloudmusic.ui.main;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toolbar;
 
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.classifyAndRecommend.CandRFragment;
@@ -22,14 +30,26 @@ public class MainActivity extends AppCompatActivity {
 
     public ViewPager viewPager;
     public BottomNavigationView navigationView;
-
+    public DrawerLayout drawerLayout;
+    public Toolbar mToolbar;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(mToolbar);
+
+      //  ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout,mToolbar,R.string.open,R.string.close);
+
+    }
 
 
+    public void openDrawer(){
+        //drawerLayout.openDrawer(drawerLayout);
+        drawerLayout.openDrawer(GravityCompat.START);
     }
 
     private void initView() {

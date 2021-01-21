@@ -20,11 +20,11 @@ public class LoginPresenter implements LoginContract.Presenter {
         if(TextUtils.isEmpty(username))
         {
             Toast.makeText(view.getContext(),"请输入用户名",Toast.LENGTH_SHORT).show();
-            return;
+         //   return;
         }
       if(TextUtils.isEmpty(password)){
             Toast.makeText(view.getContext(),"请输入密码",Toast.LENGTH_SHORT).show();
-            return;
+           // return;
         }
 
        //没有后端支持，无论怎么样都会登录成功qwq

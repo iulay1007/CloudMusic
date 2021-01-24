@@ -31,15 +31,14 @@ public class MainActivity extends AppCompatActivity {
     public ViewPager viewPager;
     public BottomNavigationView navigationView;
     public DrawerLayout drawerLayout;
-    public Toolbar mToolbar;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+       // drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
+
         //setSupportActionBar(mToolbar);
 
       //  ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout,mToolbar,R.string.open,R.string.close);

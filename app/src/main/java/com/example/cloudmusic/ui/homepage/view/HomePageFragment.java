@@ -2,20 +2,29 @@ package com.example.cloudmusic.ui.homepage.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -24,19 +33,23 @@ import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.homepage.model.BannerBean;
 import com.example.cloudmusic.ui.main.MainActivity;
 import com.google.android.material.internal.NavigationMenu;
+import com.google.android.material.navigation.NavigationView;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerAdapter;
 import com.youth.banner.indicator.CircleIndicator;
 
 import java.util.List;
 
-public class HomePageFragment extends Fragment {
+public class HomePageFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     private Banner banner;
     private Button menu_expanded_btn;
+    public Toolbar mToolbar;
     private NavigationMenu mNavigationMenu;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+    private AppBarConfiguration mAppBarConfiguration;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("WrongConstant")
     @Nullable
     @Override
@@ -44,18 +57,69 @@ public class HomePageFragment extends Fragment {
        View view=inflater.inflate(R.layout.fragment_homepage,container,false);
         initBanner(view);
         // 获得抽屉控件
-        mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+        // mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         menu_expanded_btn=(Button) view.findViewById(R.id.expanded_menu_btn);
-      // mDrawerLayout.isDrawerVisible(View.GONE);
+
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
+        mToolbar.setTitle("");
+        setHasOptionsMenu(true);
+        setHasOptionsMenu(true);
+        mDrawerLayout=(DrawerLayout)view.findViewById(R.id.drawer_layout);
+        NavigationView navigationView = view.findViewById(R.id.navigation_view);
+
+        navigationView.setNavigationItemSelectedListener(this);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+            menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mDrawerLayout.isDrawerOpen(Gravity.START))
+                        mDrawerLayout.closeDrawer(Gravity.START);
+                        else  mDrawerLayout.openDrawer(Gravity.START);
+                 //   else mDrawerLayout.closeDrawer(GravityCompat.START);
+                }
+            });
+     //   ActionBarDrawerToggle actionBarDrawerToggle =new ActionBarDrawerToggle(getActivity(), mDrawerLayout, mToolbar, R.string.open, R.string.close);
+        //初始化状态
+       // actionBarDrawerToggle.syncState();
+      //  //ActionBarDrawerToggle implements DrawerLayout.DrawerListener
+ //       mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+      //  mDrawerLayout.setStatusBarBackground(1);
+        //mDrawerLayout.closeDrawer(Gravity.START);
+
+
+      /*ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(),mDrawerLayout , mToolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        drawerToggle.syncState();//将左上角的图标和侧滑监听进行联动 达到动画效果显示
+        mDrawerLayout.addDrawerListener(drawerToggle);*/
+
+
+     //   mDrawerLayout.openDrawer(GravityCompat.START);
+
+       // mDrawerLayout.isDrawerVisible(View.GONE);
      ;
-        menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
+       /*menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 ((MainActivity)getActivity()).openDrawer();
             //   mDrawerLayout.openDrawer(GravityCompat.START);
             }
-        });
+        });*/
 
         // 获得菜单控件
      //   mNavigationMenu = (NavigationMenu) view. findViewById(R.id.navigation_menu);
@@ -78,6 +142,28 @@ public class HomePageFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+       // getMenuInflater().inflate(R.menu.homepage_item, menu);
+        //MenuItem item = menu.findItem(R.id.action_search);
+        //SearchView searchView=(SearchView) item.getActionView();
+
+        //searchView.setIconifiedByDefault(false);
+
+     //   SearchView searchView=(SearchView)MenuItemCompat.getActionView(item);
+       // searchView.clearFocus();
+        //searchView.setIconifiedByDefault(false);
+      //  mSearchView = (SearchView) MenuItemCompat.getActionView(item);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initBanner(View view) {
         banner=(Banner)view .findViewById(R.id.banner);
         //banner.setR
@@ -94,4 +180,8 @@ public class HomePageFragment extends Fragment {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
 }

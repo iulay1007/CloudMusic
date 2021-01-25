@@ -1,7 +1,6 @@
 package com.example.cloudmusic.ui.homepage.view;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.NonNull;
@@ -25,20 +23,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.homepage.model.BannerBean;
-import com.example.cloudmusic.ui.main.MainActivity;
 import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.navigation.NavigationView;
 import com.youth.banner.Banner;
-import com.youth.banner.adapter.BannerAdapter;
 import com.youth.banner.indicator.CircleIndicator;
-
-import java.util.List;
 
 public class HomePageFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     private Banner banner;
@@ -48,6 +42,10 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private AppBarConfiguration mAppBarConfiguration;
+    private RecyclerView recyclerView_one;
+    private RecyclerView recyclerView_two;
+    private RecyclerViewAdapter_first adapter_one;
+    private RecyclerViewAdapter_second adapter_two;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("WrongConstant")
@@ -59,6 +57,17 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
         // 获得抽屉控件
         // mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         menu_expanded_btn=(Button) view.findViewById(R.id.expanded_menu_btn);
+        recyclerView_one=(RecyclerView)view.findViewById(R.id.recyclerview_one);
+        recyclerView_two=(RecyclerView)view.findViewById(R.id.recyclerview_two);
+      //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+        adapter_one=new RecyclerViewAdapter_first(getActivity());
+        recyclerView_one.setAdapter(adapter_one);
+        recyclerView_one.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        //recyclerView.setScrollingTouchSlop();
+        recyclerView_one.addItemDecoration(new HorizontalItemDecoration(30));
+        adapter_two=new RecyclerViewAdapter_second(getActivity());
+        recyclerView_two.setAdapter(adapter_two);
+        recyclerView_two.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
 
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
@@ -66,15 +75,15 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
         setHasOptionsMenu(true);
         setHasOptionsMenu(true);
         mDrawerLayout=(DrawerLayout)view.findViewById(R.id.drawer_layout);
-        NavigationView navigationView = view.findViewById(R.id.navigation_view);
+        //NavigationView navigationView = view.findViewById(R.id.navigation_view);
 
-        navigationView.setNavigationItemSelectedListener(this);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      //  navigationView.setNavigationItemSelectedListener(this);
+     /*   mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
-        });
+        });*/
             menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -42,10 +42,10 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private AppBarConfiguration mAppBarConfiguration;
-    private RecyclerView recyclerView_one;
-    private RecyclerView recyclerView_two;
-    private RecyclerViewAdapter_first adapter_one;
-    private RecyclerViewAdapter_second adapter_two;
+    private RecyclerView recyclerView;
+
+    private RecyclerViewAdapter_homepage adapter_homepage;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("WrongConstant")
@@ -53,21 +53,16 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.fragment_homepage,container,false);
-        initBanner(view);
+       // initBanner(view);
         // 获得抽屉控件
-        // mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+         mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         menu_expanded_btn=(Button) view.findViewById(R.id.expanded_menu_btn);
-        recyclerView_one=(RecyclerView)view.findViewById(R.id.recyclerview_one);
-        recyclerView_two=(RecyclerView)view.findViewById(R.id.recyclerview_two);
-      //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
-        adapter_one=new RecyclerViewAdapter_first(getActivity());
-        recyclerView_one.setAdapter(adapter_one);
-        recyclerView_one.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        //recyclerView.setScrollingTouchSlop();
-        recyclerView_one.addItemDecoration(new HorizontalItemDecoration(30));
-        adapter_two=new RecyclerViewAdapter_second(getActivity());
-        recyclerView_two.setAdapter(adapter_two);
-        recyclerView_two.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        recyclerView=(RecyclerView)view.findViewById(R.id.homepage_recyclerview);
+        adapter_homepage=new RecyclerViewAdapter_homepage(getActivity());
+        recyclerView.setAdapter(adapter_homepage);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+     //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+         //recyclerView.setScrollingTouchSlop();
 
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
@@ -173,20 +168,6 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
         return super.onOptionsItemSelected(item);
     }
 
-    private void initBanner(View view) {
-        banner=(Banner)view .findViewById(R.id.banner);
-        //banner.setR
-        banner.setAdapter(new BannnerAdapter(BannerBean.getData()) {
-            @Override
-            public void onBindView(BannerViewHolder holder, BannerBean data, int position, int size) {
-                //图片加载自己实现
-                Glide.with(holder.itemView)
-                        .load(data.imageRes)
-                        .into(holder.imageView);
-            }
-        })
-                .setIndicator(new CircleIndicator(getContext())).setBannerRound(30);
-    }
 
 
     @Override

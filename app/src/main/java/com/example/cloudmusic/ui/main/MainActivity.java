@@ -4,18 +4,27 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toolbar;
 
+import androidx.appcompat.widget.Toolbar;
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.classifyAndRecommend.CandRFragment;
 import com.example.cloudmusic.ui.community.CommunityFragment;
@@ -31,11 +40,18 @@ public class MainActivity extends AppCompatActivity {
     public ViewPager viewPager;
     public BottomNavigationView navigationView;
     public DrawerLayout drawerLayout;
+    private DrawerLayout mDrawerLayout;
+    public Toolbar mToolbar;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//使状态栏透明
+       // getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+
         initView();
        // drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 
@@ -45,15 +61,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void openDrawer(){
         //drawerLayout.openDrawer(drawerLayout);
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
+
         viewPager=(ViewPager)findViewById(R.id.viewpager);
         navigationView=(BottomNavigationView)findViewById(R.id.nav_view);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        mToolbar = findViewById(R.id.toolbar);
+        mToolbar.setTitle("");
+          setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+        //   mDrawerLayout=(DrawerLayout)view.findViewById(R.id.drawer_layout);
+
+      //  setHasOptionsMenu(true);
         viewPager.setAdapter(new ViewPageAdapter(getSupportFragmentManager(),getFragmentList()));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -100,5 +128,30 @@ public class MainActivity extends AppCompatActivity {
     list.add(new MineFragment());
     list.add((new CommunityFragment()));
     return list;
+    }
+
+    @SuppressLint("WrongConstant")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+        case android.R.id.home:mDrawerLayout.openDrawer(Gravity.START);
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        mToolbar.inflateMenu(R.menu.searchview_item);
+      //MenuItem menuItem=mToolbar.findViewById(R.id.searchView_menu_item);
+    //    SearchView searchView=(SearchView) MenuItemCompat.getActionView(menuItem);
+       //SearchView searchView= (SearchView) menuItem.getActionView();
+       // searchView.setQueryHint("qwq");
+        //searchView.setBackground(getDrawable(R.drawable.login_btn_background));
+        return super.onCreateOptionsMenu(menu);
     }
 }

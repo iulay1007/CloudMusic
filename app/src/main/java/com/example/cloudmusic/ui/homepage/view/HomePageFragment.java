@@ -22,7 +22,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,8 +36,8 @@ import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.navigation.NavigationView;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
-
-public class HomePageFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+//implements NavigationView.OnNavigationItemSelectedListener
+public class HomePageFragment extends Fragment  {
     private Banner banner;
     private Button menu_expanded_btn;
     public Toolbar mToolbar;
@@ -55,6 +58,9 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
        View view=inflater.inflate(R.layout.fragment_homepage,container,false);
        // initBanner(view);
         // 获得抽屉控件
+      //  Toolbar toolbar =view.findViewById(R.id.toolbar);
+
+       // ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
          mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         menu_expanded_btn=(Button) view.findViewById(R.id.expanded_menu_btn);
         recyclerView=(RecyclerView)view.findViewById(R.id.homepage_recyclerview);
@@ -64,12 +70,17 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
      //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
          //recyclerView.setScrollingTouchSlop();
 
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
-        mToolbar.setTitle("");
-        setHasOptionsMenu(true);
-        setHasOptionsMenu(true);
-        mDrawerLayout=(DrawerLayout)view.findViewById(R.id.drawer_layout);
+      // mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+       // ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
+
+
+
+     //   mDrawerLayout=(DrawerLayout)view.findViewById(R.id.drawer_layout);
+        //mToolbar.setTitle("");
+        //setHasOptionsMenu(true);
+
+
+
         //NavigationView navigationView = view.findViewById(R.id.navigation_view);
 
       //  navigationView.setNavigationItemSelectedListener(this);
@@ -79,7 +90,9 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });*/
-            menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
+
+     //useful
+          /*  menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(mDrawerLayout.isDrawerOpen(Gravity.START))
@@ -87,7 +100,8 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
                         else  mDrawerLayout.openDrawer(Gravity.START);
                  //   else mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
-            });
+            });*/
+
      //   ActionBarDrawerToggle actionBarDrawerToggle =new ActionBarDrawerToggle(getActivity(), mDrawerLayout, mToolbar, R.string.open, R.string.close);
         //初始化状态
        // actionBarDrawerToggle.syncState();
@@ -146,7 +160,7 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
         return view;
     }
 
-    @Override
+  /*  @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
@@ -160,7 +174,7 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
        // searchView.clearFocus();
         //searchView.setIconifiedByDefault(false);
       //  mSearchView = (SearchView) MenuItemCompat.getActionView(item);
-
+       getActivity().getMenuInflater().inflate(R.menu.navigation_menu,menu);
     }
 
     @Override
@@ -173,5 +187,5 @@ public class HomePageFragment extends Fragment implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         return false;
-    }
+    }*/
 }

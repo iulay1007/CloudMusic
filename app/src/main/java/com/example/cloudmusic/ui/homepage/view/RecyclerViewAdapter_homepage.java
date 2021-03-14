@@ -66,7 +66,7 @@ public class RecyclerViewAdapter_homepage extends RecyclerView.Adapter<RecyclerV
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 10;
     }
     class BannerViewHolder extends RecyclerView.ViewHolder {
 

@@ -39,7 +39,6 @@ import com.youth.banner.indicator.CircleIndicator;
 //implements NavigationView.OnNavigationItemSelectedListener
 public class HomePageFragment extends Fragment  {
     private Banner banner;
-    private Button menu_expanded_btn;
     public Toolbar mToolbar;
     private NavigationMenu mNavigationMenu;
     private DrawerLayout mDrawerLayout;
@@ -62,7 +61,7 @@ public class HomePageFragment extends Fragment  {
 
        // ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
          mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
-        menu_expanded_btn=(Button) view.findViewById(R.id.expanded_menu_btn);
+
         recyclerView=(RecyclerView)view.findViewById(R.id.homepage_recyclerview);
         adapter_homepage=new RecyclerViewAdapter_homepage(getActivity());
         recyclerView.setAdapter(adapter_homepage);

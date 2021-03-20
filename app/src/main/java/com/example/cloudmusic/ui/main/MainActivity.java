@@ -30,6 +30,7 @@ import com.example.cloudmusic.ui.classifyAndRecommend.CandRFragment;
 import com.example.cloudmusic.ui.community.CommunityFragment;
 import com.example.cloudmusic.ui.homepage.view.HomePageFragment;
 import com.example.cloudmusic.ui.mine.MineFragment;
+import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -48,9 +49,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        // getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//使状态栏透明
        // getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+   /*     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        StatusBarCompat.setStatusBarColor(this, Color.TRANSPARENT);*/
+
         setContentView(R.layout.activity_main);
 
+       // StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
 
         initView();
        // drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);

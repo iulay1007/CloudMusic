@@ -31,9 +31,10 @@ public class RecyclerViewAdapter_homepage extends RecyclerView.Adapter<RecyclerV
             return new BannerViewHolder(LayoutInflater.from(context).inflate(R.layout.homepage_banner, parent, false));
         else if(viewType==1)
             return new Recyclerview_one_Holder(LayoutInflater.from(context).inflate(R.layout.homepage_recyclerview_one, parent, false));
-        else
+        else if(viewType==2)
             return new Recyclerview_two_Holder(LayoutInflater.from(context).inflate(R.layout.homepage_recyclerview_two, parent, false));
-
+        else
+            return new Recyclerview_three_Holder(LayoutInflater.from(context).inflate(R.layout.homepage_recyclerview_three,parent,false));
 
     }
 
@@ -41,12 +42,14 @@ public class RecyclerViewAdapter_homepage extends RecyclerView.Adapter<RecyclerV
     public int getItemViewType(int position) {
         if(position==0)
             return 0;
-        else if(position==1)
+        else if (position==1)
             return 1;
         else if (position==2)
             return 2;
-
-       return super.getItemViewType(position);
+        else if (position==3)
+            return 3;
+        return 2;
+     //  return super.getItemViewType(position);
     }
 
     @Override
@@ -61,6 +64,8 @@ public class RecyclerViewAdapter_homepage extends RecyclerView.Adapter<RecyclerV
 
 
         }
+        else if(holder instanceof Recyclerview_three_Holder){}
+
 
     }
 
@@ -118,6 +123,20 @@ public class RecyclerViewAdapter_homepage extends RecyclerView.Adapter<RecyclerV
             recyclerView_two.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
             recyclerView_two.addItemDecoration(new HorizontalItemDecoration(20));
 
+        }
+    }
+
+    class Recyclerview_three_Holder extends RecyclerView.ViewHolder{
+
+        private RecyclerView recyclerView_three;
+        private RecyclerViewAdapter_third adapter_third;
+        public Recyclerview_three_Holder(@NonNull View itemView) {
+            super(itemView);
+            recyclerView_three=(RecyclerView)itemView.findViewById(R.id.recyclerview_three);
+            adapter_third=new RecyclerViewAdapter_third(context);
+            recyclerView_three.setAdapter(adapter_third);
+            recyclerView_three.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+            recyclerView_three.addItemDecoration(new HorizontalItemDecoration(20));
         }
     }
 

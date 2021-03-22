@@ -22,7 +22,6 @@ public class RecyclerViewAdapter_homepage extends RecyclerView.Adapter<RecyclerV
     public RecyclerViewAdapter_homepage(Context context){
         this.context = context;
 
-
     }
     @NonNull
     @Override

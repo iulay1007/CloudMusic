@@ -108,8 +108,8 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        app:menu="@menu/navigation_menu"
-        app:headerLayout="@layout/nav_header"
+
+
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"

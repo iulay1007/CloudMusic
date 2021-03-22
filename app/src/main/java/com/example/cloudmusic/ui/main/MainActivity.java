@@ -9,6 +9,8 @@ import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -29,9 +31,11 @@ import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.classifyAndRecommend.CandRFragment;
 import com.example.cloudmusic.ui.community.CommunityFragment;
 import com.example.cloudmusic.ui.homepage.view.HomePageFragment;
+import com.example.cloudmusic.ui.main.view.RecyclerviewAdapter_NavigationView;
 import com.example.cloudmusic.ui.mine.MineFragment;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +43,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public ViewPager viewPager;
-    public BottomNavigationView navigationView;
+    public BottomNavigationView bottomNavigationView;
+    public NavigationView navigationView;
+    public RecyclerView nav_recyclerview;
+    public RecyclerviewAdapter_NavigationView recyclerviewAdapter_navigationView;
     public DrawerLayout drawerLayout;
     private DrawerLayout mDrawerLayout;
     public Toolbar mToolbar;
@@ -80,9 +87,19 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
 
         viewPager=(ViewPager)findViewById(R.id.viewpager);
-        navigationView=(BottomNavigationView)findViewById(R.id.nav_view);
+        bottomNavigationView=(BottomNavigationView)findViewById(R.id.nav_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView=(NavigationView)findViewById(R.id.navigation_view);
+        navigationView.inflateHeaderView(R.layout.nav_header);
 
+        View navHeaderView = navigationView.getHeaderView(0);
+        nav_recyclerview=(RecyclerView)navHeaderView.findViewById(R.id.nav_recyclerview);
+        recyclerviewAdapter_navigationView=new RecyclerviewAdapter_NavigationView(this);
+        nav_recyclerview.setAdapter(recyclerviewAdapter_navigationView);
+        nav_recyclerview.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+
+        // navHeaderView.
+       // navigationView.inflate
 
         mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("");
@@ -101,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                navigationView.getMenu().getItem(position).setChecked(true);
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
 
             @Override
@@ -109,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){

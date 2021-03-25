@@ -2,7 +2,12 @@ package com.example.cloudmusic.ui.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -12,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.main.MainActivity;
 
+
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     private Button login_btn;
     private EditText username_et;
@@ -20,6 +26,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window=getWindow();
+            View decorView = window.getDecorView();
+            decorView.setSystemUiVisibility(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+           getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
         setContentView(R.layout.activity_login);
         initView();
         presenter=new LoginPresenter(this);

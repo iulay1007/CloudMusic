@@ -54,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window=getWindow();
+            View decorView = window.getDecorView();
+            decorView.setSystemUiVisibility(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
        // getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//使状态栏透明
        // getWindow().setStatusBarColor(Color.TRANSPARENT);
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

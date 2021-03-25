@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         nav_recyclerview.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
 
         // navHeaderView.
-       // navigationView.inflate
+        // navigationView.inflate
 
         mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("");

@@ -22,10 +22,10 @@ public class RecyclerviewAdapter_NavigationView extends RecyclerView.Adapter<Rec
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      //  if(viewType==0)
+       if(viewType==0)
             return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.navigationview_first_item,parent,false));
-       // else // if(viewType==2)
-       // return new SomeRecyclerviewViewHolder(LayoutInflater.from(context).inflate(R.layout.navigationview_white_cardview_item,parent,false));
+       else // if(viewType==2)
+        return new SomeRecyclerviewViewHolder(LayoutInflater.from(context).inflate(R.layout.navigationview_white_cardview_item,parent,false));
 
     }
 
@@ -41,11 +41,11 @@ public class RecyclerviewAdapter_NavigationView extends RecyclerView.Adapter<Rec
 
     @Override
     public int getItemViewType(int position) {
-      //  if(position==0)
-       //     return 0;
+       if(position==0)
+            return 0;
 
-            //    return 1;
-      return super.getItemViewType(position);
+       return 1;
+     // return super.getItemViewType(position);
     }
 
     @Override

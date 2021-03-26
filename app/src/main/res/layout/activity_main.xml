@@ -1,38 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:layout_height="match_parent"
-    >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    >
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        tools:ignore="MissingConstraints">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:clipToPadding="true"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-
-            />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
@@ -47,6 +20,7 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_bth"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#ffffff"
@@ -95,27 +69,14 @@
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:itemHorizontalTranslationEnabled="true"
+        app:itemTextColor="#DDDBDB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation_item"
-        app:itemHorizontalTranslationEnabled="true"
-     app:itemTextColor="#DDDBDB"/>
+        app:menu="@menu/navigation_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
 
-
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        tools:ignore="MissingConstraints"
-        >
-
-    </com.google.android.material.navigation.NavigationView>
-</androidx.drawerlayout.widget.DrawerLayout>

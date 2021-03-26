@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.homepage.model.BannerBean;
+import com.example.cloudmusic.ui.main.view.RecyclerviewAdapter_NavigationView;
 import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.navigation.NavigationView;
 import com.youth.banner.Banner;
@@ -42,9 +43,14 @@ public class HomePageFragment extends Fragment  {
     public Toolbar mToolbar;
     private NavigationMenu mNavigationMenu;
     private DrawerLayout mDrawerLayout;
+    public NavigationView navigationView;
+    public RecyclerView nav_recyclerview;
+    public RecyclerviewAdapter_NavigationView recyclerviewAdapter_navigationView;
+
     private ActionBarDrawerToggle mDrawerToggle;
     private AppBarConfiguration mAppBarConfiguration;
     private RecyclerView recyclerView;
+   private Button open_nav_btn;
 
     private RecyclerViewAdapter_homepage adapter_homepage;
 
@@ -60,13 +66,23 @@ public class HomePageFragment extends Fragment  {
       //  Toolbar toolbar =view.findViewById(R.id.toolbar);
 
        // ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        open_nav_btn=(Button)view.findViewById(R.id.open_nav_btn);
          mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+        navigationView=(NavigationView)view.findViewById(R.id.navigation_view);
+        navigationView.inflateHeaderView(R.layout.nav_header);
 
         recyclerView=(RecyclerView)view.findViewById(R.id.homepage_recyclerview);
         adapter_homepage=new RecyclerViewAdapter_homepage(getActivity());
         recyclerView.setAdapter(adapter_homepage);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
-     //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+
+        View navHeaderView = navigationView.getHeaderView(0);
+        nav_recyclerview=(RecyclerView)navHeaderView.findViewById(R.id.nav_recyclerview);
+        recyclerviewAdapter_navigationView=new RecyclerviewAdapter_NavigationView(getActivity());
+        nav_recyclerview.setAdapter(recyclerviewAdapter_navigationView);
+        nav_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+
+        //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
          //recyclerView.setScrollingTouchSlop();
 
       // mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
@@ -91,7 +107,7 @@ public class HomePageFragment extends Fragment  {
         });*/
 
      //useful
-          /*  menu_expanded_btn.setOnClickListener(new View.OnClickListener() {
+          open_nav_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(mDrawerLayout.isDrawerOpen(Gravity.START))
@@ -99,7 +115,7 @@ public class HomePageFragment extends Fragment  {
                         else  mDrawerLayout.openDrawer(Gravity.START);
                  //   else mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
-            });*/
+            });
 
      //   ActionBarDrawerToggle actionBarDrawerToggle =new ActionBarDrawerToggle(getActivity(), mDrawerLayout, mToolbar, R.string.open, R.string.close);
         //初始化状态

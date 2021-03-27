@@ -93,10 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openDrawer(){
-        //drawerLayout.openDrawer(drawerLayout);
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
@@ -204,16 +200,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        mToolbar.inflateMenu(R.menu.searchview_item);
-      //MenuItem menuItem=mToolbar.findViewById(R.id.searchView_menu_item);
-    //    SearchView searchView=(SearchView) MenuItemCompat.getActionView(menuItem);
-       //SearchView searchView= (SearchView) menuItem.getActionView();
-       // searchView.setQueryHint("qwq");
-        //searchView.setBackground(getDrawable(R.drawable.login_btn_background));
-        return super.onCreateOptionsMenu(menu);
-    }
+
 }

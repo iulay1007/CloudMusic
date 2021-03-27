@@ -15,8 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.cloudmusic.R;
 
 public class MineFragment extends Fragment {
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @SuppressLint("WrongConstant")
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

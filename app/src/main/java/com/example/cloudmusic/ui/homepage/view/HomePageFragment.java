@@ -66,21 +66,7 @@ public class HomePageFragment extends Fragment  {
       //  Toolbar toolbar =view.findViewById(R.id.toolbar);
 
        // ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        open_nav_btn=(Button)view.findViewById(R.id.open_nav_btn);
-         mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
-        navigationView=(NavigationView)view.findViewById(R.id.navigation_view);
-        navigationView.inflateHeaderView(R.layout.nav_header);
-
-        recyclerView=(RecyclerView)view.findViewById(R.id.homepage_recyclerview);
-        adapter_homepage=new RecyclerViewAdapter_homepage(getActivity());
-        recyclerView.setAdapter(adapter_homepage);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
-
-        View navHeaderView = navigationView.getHeaderView(0);
-        nav_recyclerview=(RecyclerView)navHeaderView.findViewById(R.id.nav_recyclerview);
-        recyclerviewAdapter_navigationView=new RecyclerviewAdapter_NavigationView(getActivity());
-        nav_recyclerview.setAdapter(recyclerviewAdapter_navigationView);
-        nav_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+        initView(view);
 
         //  RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
          //recyclerView.setScrollingTouchSlop();
@@ -173,6 +159,24 @@ public class HomePageFragment extends Fragment  {
 
 
         return view;
+    }
+
+    private void initView(View view) {
+        open_nav_btn=(Button)view.findViewById(R.id.open_nav_btn);
+        mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+        navigationView=(NavigationView)view.findViewById(R.id.navigation_view);
+        navigationView.inflateHeaderView(R.layout.nav_header);
+
+        recyclerView=(RecyclerView)view.findViewById(R.id.homepage_recyclerview);
+        adapter_homepage=new RecyclerViewAdapter_homepage(getActivity());
+        recyclerView.setAdapter(adapter_homepage);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+
+        View navHeaderView = navigationView.getHeaderView(0);
+        nav_recyclerview=(RecyclerView)navHeaderView.findViewById(R.id.nav_recyclerview);
+        recyclerviewAdapter_navigationView=new RecyclerviewAdapter_NavigationView(getActivity());
+        nav_recyclerview.setAdapter(recyclerviewAdapter_navigationView);
+        nav_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
     }
 
   /*  @Override

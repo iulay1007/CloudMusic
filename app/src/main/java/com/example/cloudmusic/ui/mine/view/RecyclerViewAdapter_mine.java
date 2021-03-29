@@ -22,11 +22,12 @@ public class RecyclerViewAdapter_mine extends RecyclerView.Adapter<RecyclerView.
 
 
     public interface ItemScrollListener{
-        void onScrollChanged(int y);
+        void onScrollChanged(TextView textView,int y);
     }
     public void setItemScrollListener(ItemScrollListener itemScrollListener){
         this.itemScrollListener=itemScrollListener;
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,7 +52,7 @@ public class RecyclerViewAdapter_mine extends RecyclerView.Adapter<RecyclerView.
         if(holder instanceof MyViewHolder) {
             ((MyViewHolder) holder).textView.getHeight();
             if(itemScrollListener!=null)
-            itemScrollListener.onScrollChanged(((MyViewHolder) holder).textView.getHeight());
+            itemScrollListener.onScrollChanged(((MyViewHolder) holder).textView,((MyViewHolder) holder).textView.getHeight());
         }
             //else if
     }

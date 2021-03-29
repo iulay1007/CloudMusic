@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.mine.view.RecyclerViewAdapter_mine;
@@ -26,7 +28,7 @@ public class MineFragment extends Fragment {
 
     private RecyclerViewAdapter_mine recyclerViewAdapter_mine;
     private RecyclerView mRecyclerview;
-    private TextView textView;
+    private ImageView imageView;
     private TextView mtext;
     private MyScrollView myScrollView;
     @Nullable
@@ -42,25 +44,32 @@ public class MineFragment extends Fragment {
         recyclerViewAdapter_mine=new RecyclerViewAdapter_mine(getActivity());
         mRecyclerview.setAdapter(recyclerViewAdapter_mine);
         mRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false));
-        textView=(TextView)view.findViewById(R.id.tvtestmine);
+        imageView=(ImageView) view.findViewById(R.id.circle_ig_mine);
         mtext=(TextView)view.findViewById(R.id.tvte);
         myScrollView=(MyScrollView)view.findViewById(R.id.myscrollView);
-        textView.setVisibility(View.GONE);
+        imageView.setVisibility(View.GONE);
         mRecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
+          @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                recyclerViewAdapter_mine.setItemScrollListener(new RecyclerViewAdapter_mine.ItemScrollListener() {
+              LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerview.getLayoutManager();
+              int position = layoutManager.findFirstVisibleItemPosition();
+              if(position == 0){
+                  imageView.setVisibility(View.GONE);
+              }else {
+                  imageView.setVisibility(View.VISIBLE);
+              }
+                /*recyclerViewAdapter_mine.setItemScrollListener(new RecyclerViewAdapter_mine.ItemScrollListener() {
                     @Override
-                    public void onScrollChanged(int y) {
-                        if(dy>y)
+                    public void onScrollChanged(TextView textView,int y) {
+                        if(dy>textView.getHeight())
                             textView.setVisibility(View.VISIBLE);
                         Log.d("scr","======>1dy  "+dy);
                         Log.d("scr","======>dy  "+dy+"====>y"+y);
                     }
-                });
+                });*/
 
-                Log.d("scr","======>2dy  "+dy);
+              //  Log.d("scr","======>2dy  "+dy);
                // if(dy>30)
                  //   textView.setVisibility(View.VISIBLE);
               //  Log.d("scr","======>"+dy);

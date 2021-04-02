@@ -45,7 +45,7 @@ public class MineFragment extends Fragment {
         mRecyclerview.setAdapter(recyclerViewAdapter_mine);
         mRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false));
         imageView=(ImageView) view.findViewById(R.id.circle_ig_mine);
-        mtext=(TextView)view.findViewById(R.id.tvte);
+       // mtext=(TextView)view.findViewById(R.id.tvte);
         myScrollView=(MyScrollView)view.findViewById(R.id.myscrollView);
         imageView.setVisibility(View.GONE);
         mRecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -86,6 +86,7 @@ public class MineFragment extends Fragment {
         myScrollView.setScrollViewListener(new MyScrollView.ScrollViewListener() {
             @Override
             public void onScrollChanged(MyScrollView scrollView, int x, int y, int oldx, int oldy) {
+                
               /*  if (y > mtext.getHeight())
 
                     textView.setVisibility(View.VISIBLE);

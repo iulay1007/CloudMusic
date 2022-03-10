@@ -18,7 +18,7 @@
         android:layout_height="35dp"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/songname_tv"
+        android:id="@+id/music_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="song's name"
@@ -30,12 +30,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
     <TextView
+        android:id="@+id/singer_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="singer's name"
         android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/songname_tv"
+        app:layout_constraintTop_toBottomOf="@id/music_name_tv"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
@@ -52,11 +53,11 @@
         android:background="@drawable/music_play_bg"
         />
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/music_img_iv"
         android:layout_width="270dp"
         android:layout_height="270dp"
         android:background="@drawable/ic_baseline_panorama_fish_eye_24"
-        app:layout_constraintTop_toBottomOf="@id/songname_tv"
+        app:layout_constraintTop_toBottomOf="@id/music_name_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="70dp"
@@ -99,7 +100,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/ic_baseline_play_circle_outline_24"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="15dp"

@@ -3,21 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:id="@+id/cons_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 <ImageView
     android:layout_marginHorizontal="20dp"
-    android:id="@+id/image"
+    android:id="@+id/recommend_music_img_iv"
     android:background="@drawable/ic_baseline_stars_24"
     android:layout_width="50dp"
     android:layout_height="50dp"
     tools:ignore="MissingConstraints" />
     <TextView
-        android:id="@+id/text"
-        app:layout_constraintStart_toStartOf="@id/image"
-        app:layout_constraintEnd_toEndOf="@id/image"
+        android:id="@+id/name_tv"
+        app:layout_constraintStart_toStartOf="@id/recommend_music_img_iv"
+        app:layout_constraintEnd_toEndOf="@id/recommend_music_img_iv"
         android:text="item"
-        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/recommend_music_img_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

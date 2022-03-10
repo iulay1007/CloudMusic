@@ -1,17 +1,14 @@
-package com.example.cloudmusic.ui.homepage.view;
+package com.example.cloudmusic.ui.homepage.view.adapter;
 
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cloudmusic.R;
 import com.example.cloudmusic.ui.homepage.model.BannerBean;
 import com.youth.banner.adapter.BannerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BannnerAdapter extends BannerAdapter<BannerBean,BannnerAdapter.BannerViewHolder>{

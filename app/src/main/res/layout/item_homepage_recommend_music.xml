@@ -14,7 +14,7 @@
     tools:ignore="MissingConstraints">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/recommend_music_img_iv"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,10 +25,12 @@
        android:scaleType="centerCrop"/>
       </androidx.cardview.widget.CardView>
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/recommend_music_name_tv"
         android:text="still item"
         android:textSize="10sp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:maxLines="1"
+        android:gravity="center"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/cardview"
         app:layout_constraintEnd_toEndOf="@id/cardview"

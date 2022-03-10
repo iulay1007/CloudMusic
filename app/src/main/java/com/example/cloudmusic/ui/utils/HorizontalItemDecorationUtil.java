@@ -1,4 +1,4 @@
-package com.example.cloudmusic.ui.homepage.view;
+package com.example.cloudmusic.ui.utils;
 
 import android.graphics.Rect;
 import android.view.View;
@@ -6,11 +6,11 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HorizontalItemDecoration extends RecyclerView.ItemDecoration
+public class HorizontalItemDecorationUtil extends RecyclerView.ItemDecoration
 {
     private int space;//定义2个Item之间的距离
 
-    public HorizontalItemDecoration(int space) {
+    public HorizontalItemDecorationUtil(int space) {
         this.space = space;
     }
 

@@ -43,6 +43,7 @@ public class CommunityFragment extends Fragment {
         return view;
     }
 
+
     private void initView(View view) {
         mTablayout = (TabLayout) view.findViewById(R.id.tablayout);
         mViewPager = (ViewPager)view.findViewById(R.id.viewpager);
